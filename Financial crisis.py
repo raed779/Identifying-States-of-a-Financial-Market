@@ -183,7 +183,7 @@ fig.update_layout(
     width=700,
     height=800,)
 fig.show() 
-#fig.savefig("SP_500_data_commodities_data.png",dpi=120) 
-fig.write_image(file='"SP_500_data_commodities_data.png",', format='.png')
 
 
+
+fig.write_image("SP_500_data_commodities_data.png", engine="kaleido")
