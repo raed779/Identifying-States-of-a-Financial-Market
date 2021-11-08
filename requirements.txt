@@ -6,7 +6,7 @@ numpy
 pandas_datareader
 plotly
 scipy
-math
+
 datetime
 
 Kaleido 
