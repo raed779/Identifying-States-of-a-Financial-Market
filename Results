@@ -1,0 +1,4 @@
+Using a similarity measure we were able to classify several typical market states between which the market jumps back and forth.
+Some of these states can easily be identified in this similarity measure. However, there are several states in which the market 
+only stays for a short period. Thus, these states are sparsely embedded in time. With a k-means clustering analysis,
+we were able to identify these states and disclose a detailed dynamics of the market's state.
