@@ -182,8 +182,61 @@ fig.update_layout(
     autosize=False,
     width=700,
     height=800,)
+#fig.show() 
+
+
+
+fig.write_image("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\SP_500_data_commodities_data.png", engine="kaleido")
+
+
+#month=[1,2,3,4,5,6,7,8,9,10,11,12]
+#month=[1,7]  +5
+month=[1,3,5,7,9,11,] # +1
+year=[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
+
+dara_for_clust=pd.DataFrame()
+for yy in year:
+  for mo in month:
+    #data_m=data_month_just_one(return_sp500_test_data_drive,yy,mo)
+    data_m =data_to_cluste_month(SP_500_data_return,yy,mo,mo+1)
+    #data_m=data_m.dropna(axis=1)
+    
+    correlations = data_m.corr()
+    correlations=correlations.fillna(0)  
+    #correlations[np.arange(correlations.shape[0])[:,None] > np.arange(correlations.shape[1])] = np.nan
+    ndf = correlations.unstack().to_frame().T
+    ndf.columns = ndf.columns.map('{0[0]}_{0[1]}'.format) 
+    ndf.index=[data_m.index[0]]
+    #ndf=ndf.dropna(axis=1)
+    dara_for_clust=dara_for_clust.append(ndf)
+
+
+
+lt=[]
+matrix=pd.DataFrame(columns=dara_for_clust.index.to_list())
+for j in range(dara_for_clust.shape[0]):
+  print(j)
+  lt=[]
+  for i in range(dara_for_clust.shape[0]):
+    similarity=abs(dara_for_clust.iloc[j]-dara_for_clust.iloc[i]).mean()
+    lt.append(similarity)
+  matrix = matrix.append(pd.DataFrame([lt], columns=dara_for_clust.index.to_list()),ignore_index=True)
+
+
+matrix.index=matrix.columns
+
+
+
+#diff
+fig = px.imshow(matrix,
+              labels=dict(x="sp500_Commodities", y="sp500_Commodities", color="correlations"),
+              x=matrix.index.to_list(),
+              y=matrix.columns.to_list()
+              )
+fig.update_layout(
+    autosize=False,
+    width=1000,
+    height=800,)
 fig.show() 
 
-
-
-fig.write_image("SP_500_data_commodities_data.png", engine="kaleido")
+fig.write_image("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\Financial_crisis.png", engine="kaleido")
