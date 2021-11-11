@@ -173,7 +173,7 @@ correlations = dat_test.corr(method='pearson')
 # cmap="PiYG"
 
 
-fig = px.imshow(correlations,
+fig = px.imshow(correlations,olor_continuous_scale='Blues',
             labels=dict(x="SP_500_data_commodities_data", y="SP_500_data_commodities_data", color="correlations"),
             x=correlations.index.to_list(),
             y=correlations.columns.to_list()
@@ -228,14 +228,14 @@ matrix.index=matrix.columns
 
 
 #diff
-fig = px.imshow(matrix,
+fig = px.imshow(matrix,olor_continuous_scale='Blues',
               labels=dict(x="sp500_Commodities", y="sp500_Commodities", color="correlations"),
               x=matrix.index.to_list(),
               y=matrix.columns.to_list()
               )
 fig.update_layout(
     autosize=False,
-    width=1000,
+    width=800,
     height=800,)
 fig.show() 
 
