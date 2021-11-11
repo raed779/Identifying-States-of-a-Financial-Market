@@ -192,7 +192,7 @@ fig.write_image("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\SP_500_d
 #month=[1,2,3,4,5,6,7,8,9,10,11,12]
 #month=[1,7]  +5
 month=[1,3,5,7,9,11,] # +1
-year=[2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
+year=[2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020]
 
 dara_for_clust=pd.DataFrame()
 for yy in year:
