@@ -238,5 +238,5 @@ fig.update_layout(
     width=800,
     height=800,)
 fig.show() 
-
-fig.write_image("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\Financial_crisis.png", engine="kaleido")
+#fig.write_image("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\Financial_crisis.png", engine="kaleido")
+fig.write_image("Identifying-States-of-a-Financial-Market\\Figs\\Financial_crisis.png", engine="kaleido")
