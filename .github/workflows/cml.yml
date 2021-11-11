@@ -29,7 +29,7 @@ jobs:
          
           
           echo "## Data viz" >> report.md
-          cml-publish Identifying-States-of-a-Financial-Market/Figs/Financial_crisis.png --md >> report.md
+          cml-publish Figs/Financial_crisis.png --md >> report.md
         
           
           cml-send-comment report.md
