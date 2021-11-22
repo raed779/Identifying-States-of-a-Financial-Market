@@ -261,7 +261,7 @@ def KMENAS_2D(data,n_clust,f1,f2):
     return kmeans.labels_,list_center
     
 
-labels_,list_center=KMENAS_2D(matrix,3,"2016-01-04","2020-11-02")
+labels_,list_center=KMENAS_2D(matrix,8,"2016-01-04","2020-11-02")
 data_with_label=pd.DataFrame()
 dataset = pd.DataFrame({'classe':labels_ }, index=matrix.index)
 frame=[matrix,dataset]
