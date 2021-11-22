@@ -27,8 +27,10 @@ jobs:
           echo "oky raed -------"
           echo "oky raed 2 -------"
          
+          echo "## Data correlation" >> report.md
+          cml-publish SP_500_data_commodities_data.png --md >> report.md
           
-          echo "## Data viz" >> report.md
+          echo "## Financial_crisis" >> report.md
           cml-publish Financial_crisis.png --md >> report.md
         
           
