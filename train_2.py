@@ -58,6 +58,7 @@ ax.set_title('Random forest\nfeature importance', fontsize = title_fs)
 
 plt.tight_layout()
 plt.savefig("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\feature_importance.png",dpi=120) 
+plt.savefig("feature_importance.png",dpi=120) 
 plt.close()
 
 
@@ -82,4 +83,4 @@ plt.xlim((2.5,8.5))
 
 plt.tight_layout()
 plt.savefig("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\residuals.png",dpi=120) 
-
+plt.savefig("residuals.png",dpi=120) 
