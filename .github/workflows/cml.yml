@@ -25,11 +25,11 @@ jobs:
           
        
           echo "oky raed -------"
-
+          echo "oky raed 2 -------"
          
           
           echo "## Data viz" >> report.md
-          cml-publish Figs/Financial_crisis.png --md >> report.md
+          cml-publish Financial_crisis.png --md >> report.md
         
           
           cml-send-comment report.md
