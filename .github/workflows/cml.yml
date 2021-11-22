@@ -21,18 +21,11 @@ jobs:
         run: |
           # Your ML workflow goes here
           pip install -r requirements.txt
-      #    python Financial_crisis.py
+     
           python train_2.py
        
           echo "oky raed -------"
 
-         
-          
-      #    echo "## Data viz" >> report.md
-      #    cml-publish Figs/Financial_crisis.png --md >> report.md
-        
-          
-      #    cml-send-comment report.md
           echo "## Model metrics" > report.md
           cat metrics.txt >> report.md
           
