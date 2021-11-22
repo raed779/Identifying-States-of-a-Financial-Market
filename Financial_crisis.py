@@ -240,3 +240,81 @@ fig.update_layout(
 fig.show() 
 fig.write_image("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\Financial_crisis.png", engine="kaleido")
 fig.write_image("Financial_crisis.png", engine="kaleido")
+
+def KMENAS_2D(data,n_clust,f1,f2):
+    list_center=[]
+    kmeans = KMeans(n_clusters=n_clust,n_init =25, random_state=90)
+    kmeans.fit(data)
+    #print(metrics.silhouette_score(np.reshape(list(target), (1000,-1)),kmeans.labels_))
+    plt.figure('K-means with 2 clusters', figsize=(15,10))
+    plt.scatter(data[f1], data[f2], c=kmeans.labels_  ,cmap="tab10")
+    sns.scatterplot(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], color = 'red', 
+                  label = 'Centroids',s=300,marker='*')
+    plt.show()
+    closest, _f = pairwise_distances_argmin_min(kmeans.cluster_centers_,data)
+    #print("cluster 0: "+ str(closest[0]))
+    #print("cluster 0: "+ str(closest[1]))
+    #print("cluster 0: "+ str(closest[2]))
+    for i in range(n_clust):
+      list_center.append(closest[i])
+    
+    return kmeans.labels_,list_center
+    
+
+labels_,list_center=KMENAS_2D(matrix,3,"2016-01-04","2020-11-02")
+data_with_label=pd.DataFrame()
+dataset = pd.DataFrame({'classe':labels_ }, index=matrix.index)
+frame=[matrix,dataset]
+data_with_label=pd.concat(frame, axis=1)
+data_with_label
+data_with_label["classe"].to_frame().value_counts()
+
+
+
+def get_date_of_clustr_rows(clus):
+  t= pd.DataFrame(columns=["year","month"])
+  for i in clus:
+    s=i.split("-",2)
+    if s[1].startswith("0"):
+      s[1]=s[1][1:]
+
+    t=t.append(pd.DataFrame(data=[[int(s[0]),int(s[1])]], columns=["year","month"]))  
+
+  t=t.reset_index()
+  return t
+
+
+def plot_stat(label,r):
+    claster_0=data_with_label[data_with_label["classe"]==label]
+    claster_0=claster_0.index.to_list()
+
+    z=np.zeros((460 ,460 ))
+    culst_matrix=pd.DataFrame(data=z, columns=SP_500_data_return.columns, index=SP_500_data_return.columns)
+    clus_dat=get_date_of_clustr_rows(claster_0)
+    for i in range(clus_dat.shape[0]):
+        corr=correlations_plot_and_data__2(clus_dat["year"][i],clus_dat["month"][i],clus_dat["month"][i]+1).fillna(0)
+        culst_matrix=culst_matrix+corr
+
+
+    culst_matrix=culst_matrix[SP_500_data_return.columns]
+    culst_matrix=culst_matrix.reindex(culst_matrix.columns)
+
+    culst_matrix=culst_matrix.dropna(axis=1,how="all")
+    c=culst_matrix.loc[culst_matrix.columns,:]
+    c=c/clus_dat.shape[0]
+
+    fig = px.imshow(c,color_continuous_scale='Blues',
+                labels=dict(x="Russell_Commodities", y="Russell_Commodities", color="correlations"),
+                x=c.index.to_list(),
+                y=c.columns.to_list()
+                )
+    fig.update_layout(
+        autosize=False,
+        width=800,
+        height=700,)
+    fig.show() 
+    fig.write_image("stat_"+str(r)+"_.png", engine="kaleido")
+
+
+plot_stat(0,0)
+

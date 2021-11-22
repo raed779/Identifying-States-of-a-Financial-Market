@@ -32,6 +32,9 @@ jobs:
           
           echo "## Financial_crisis" >> report.md
           cml-publish Financial_crisis.png --md >> report.md
+
+          echo "## state 0: " >> report.md
+          cml-publish stat_0_.png --md >> report.md
         
           
           cml-send-comment report.md
