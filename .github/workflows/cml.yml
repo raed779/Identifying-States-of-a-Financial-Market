@@ -35,6 +35,27 @@ jobs:
 
           echo "## state 0: " >> report.md
           cml-publish stat_0_.png --md >> report.md
+
+          echo "## state 1: " >> report.md
+          cml-publish stat_1_.png --md >> report.md
+
+          echo "## state 2: " >> report.md
+          cml-publish stat_2_.png --md >> report.md
+
+          echo "## state 3: " >> report.md
+          cml-publish stat_3_.png --md >> report.md
+
+          echo "## state 4: " >> report.md
+          cml-publish stat_4_.png --md >> report.md
+
+          echo "## state 5: " >> report.md
+          cml-publish stat_5_.png --md >> report.md
+
+          echo "## state 6: " >> report.md
+          cml-publish stat_6_.png --md >> report.md
+
+          echo "## state 7: " >> report.md
+          cml-publish stat_7_.png --md >> report.md
         
           
           cml-send-comment report.md

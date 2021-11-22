@@ -317,4 +317,10 @@ def plot_stat(label,r):
 
 
 plot_stat(0,0)
-
+plot_stat(1,1)
+plot_stat(2,2)
+plot_stat(3,3)
+plot_stat(4,4)
+plot_stat(5,5)
+plot_stat(6,6)
+plot_stat(7,7)
