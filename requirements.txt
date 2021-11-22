@@ -1,0 +1,12 @@
+pandas
+sklearn
+matplotlib
+seaborn
+numpy
+pandas_datareader
+plotly
+scipy
+
+datetime
+
+Kaleido 
