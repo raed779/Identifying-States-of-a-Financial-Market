@@ -187,7 +187,7 @@ fig.update_layout(
 
 
 fig.write_image("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\SP_500_data_commodities_data.png", engine="kaleido")
-
+fig.write_image("SP_500_data_commodities_data.png", engine="kaleido")
 
 #month=[1,2,3,4,5,6,7,8,9,10,11,12]
 #month=[1,7]  +5
@@ -239,3 +239,4 @@ fig.update_layout(
     height=800,)
 fig.show() 
 fig.write_image("mlops\\Identifying-States-of-a-Financial-Market\\Figs\\Financial_crisis.png", engine="kaleido")
+fig.write_image("Financial_crisis.png", engine="kaleido")
